@@ -1,0 +1,53 @@
+
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button autoHide="false"></ion-menu-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+
+      </ion-buttons>
+    <ion-title>Shoppinglist</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Todo: Complete Button setzt done auf true, zweite Liste in side bar verlinken welche abgeschlossene items wiederherstellen kann-->
+
+<ion-content>
+
+  <ion-card *ngFor="let item of items" class="ion-margin">
+   
+    <ion-card-header>
+      <ion-item>
+        <ion-icon name="cart-outline"></ion-icon>
+        <ion-label>
+          {{item.name}}
+        </ion-label>
+      </ion-item>
+    </ion-card-header>
+    <ion-card-content>
+        <ion-label>
+          From {{item.date | date:'fullDate'}}
+        </ion-label>
+    </ion-card-content>
+    <ion-row>
+      <ion-list lines="none">
+        <ion-item button (click)="completeItem(item)" no-lines>
+          <ion-icon name="checkmark-outline"></ion-icon>
+          <p>Complete</p>
+        </ion-item>
+      </ion-list>
+    </ion-row>
+  </ion-card> 
+
+  <ion-fab vertical="bottom" horizontal="beginning" slot="fixed" class="ion-margin">
+    <ion-fab-button (click)="addTask()">
+      <ion-icon name="add">
+      </ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content> 
+
+
+

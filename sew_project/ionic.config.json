@@ -1,0 +1,8 @@
+{
+  "name": "sew_project",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
+  "type": "angular"
+}
