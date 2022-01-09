@@ -28,10 +28,12 @@ interface ItemID {
   templateUrl: './dashboard.page.html',
   styleUrls: ['./dashboard.page.scss'],
 })
-export class DashboardPage implements OnInit  {
-  items : ItemID[];
 
-  userId : string = null
+//Zeigt nicht erledigte/gekaufte Items an
+export class DashboardPage implements OnInit  {
+  items : ItemID[]; // Item Array
+
+  userId : string = null //UserID die für DB-Abfragen benötigt wird
   constructor(private menu: MenuController, public authService: AuthenticationService, public modalCtrl : ModalController, public itemsService : ItemService,private db: AngularFireDatabase,private afAuth: AngularFireAuth) {
     //this.afAuth.authState.subscribe(user => {
    //   if(user) this.userId = user.uid
@@ -39,10 +41,10 @@ export class DashboardPage implements OnInit  {
   this.userId = JSON.parse(localStorage.getItem('user')).uid
   }
 
-  //Todo Daten laden
-
   
 
+  
+  //Bei Laden der View nicht erledigte Items aufrufen und in Array schreiben
   ionViewDidEnter(){
     console.log(this.userId)
     this.itemsService.getUndoneItems().subscribe((res) => {
@@ -57,7 +59,7 @@ export class DashboardPage implements OnInit  {
     
   }
 
-
+  //Item Abschließen
   completeItem(item: ItemID) {
     this.itemsService.update(item.id, {
       name: item.name,
@@ -66,20 +68,21 @@ export class DashboardPage implements OnInit  {
     });
   }
 
+  //Aufrufe für Sidemenu
   openFirst() {
     this.menu.enable(true, 'first');
     this.menu.open('first');
   }
-
   openEnd() {
     this.menu.open('end');
   }
-
   openCustom() {
     this.menu.enable(true, 'custom');
     this.menu.open('custom');
   }
 
+
+  //Öffnen des Modals für neues Item
   async addTask(){
     const modal = await this.modalCtrl.create({
       component : AddNewTaskPage
@@ -87,6 +90,7 @@ export class DashboardPage implements OnInit  {
     return await modal.present()
   }
 
+  //Löschen von Item über id
   deleteItem(id : string){
     this.itemsService.delete(id);
   }

@@ -8,7 +8,7 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat
 @Injectable({
   providedIn: 'root'
 })
-
+//Service für Login und Registrierung mittels Firebase Authentication
 export class AuthenticationService {
   userData: any;
   constructor(

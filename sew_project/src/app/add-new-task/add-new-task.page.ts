@@ -8,6 +8,8 @@ import { ItemService } from '../shared/item.service';
   templateUrl: './add-new-task.page.html',
   styleUrls: ['./add-new-task.page.scss'],
 })
+
+// Modal zum hinzufügen von Items
 export class AddNewTaskPage implements OnInit {
 
   constructor(public modalCtrl: ModalController, public itemService: ItemService) { }
@@ -24,6 +26,7 @@ export class AddNewTaskPage implements OnInit {
     await this.modalCtrl.dismiss()
   }
 
+  //Generiert Item und schreibt in DB
   AddItem(){
     if (this.itemName != null) {
       this.item = ({ name: this.itemName, date: Date.now().toString(), done: false })

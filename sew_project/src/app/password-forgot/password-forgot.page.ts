@@ -16,7 +16,7 @@ export class PasswordForgotPage implements OnInit {
 
   ngOnInit() {
   }
-
+  //Passwort vergessen, liefert email an das Service weiter
   RecoverPassword(email){
     this.authService.PasswordRecover(email.value)
     .then((res) => {

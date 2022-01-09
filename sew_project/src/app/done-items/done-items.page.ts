@@ -14,6 +14,9 @@ interface ItemID {
   templateUrl: './done-items.page.html',
   styleUrls: ['./done-items.page.scss'],
 })
+
+//Zeigt bereits erledigte/gekaufte Items an
+//Kommentare: siehe dashboard Page, dar fast identisch
 export class DoneItemsPage implements OnInit {
   items : ItemID[];
 

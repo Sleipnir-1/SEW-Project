@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 
-
+//Service 
 export class ItemService {
   //items: AngularFireList<any>;
   userId: string = null

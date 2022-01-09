@@ -16,7 +16,7 @@ export class LoginPage implements OnInit {
   ) {}
 
   ngOnInit() {}
-
+  //Login Methode welche auf die Felder im login.page.html zugreift und diese an das Service weitergibt
   logIn(email, password) {
     this.authService.SignIn(email.value, password.value)
       .then((res) => {
